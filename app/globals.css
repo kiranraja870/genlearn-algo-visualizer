@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border !scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  button {
+    @apply active:outline-none;
+  }
+}
+
+@layer utilities {
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+}
+
+/* /* =========================================
+   UPDATED SORTING & VISUALIZER STYLES
+   (Paste at the end of globals.css)
+   ========================================= */
+
+/* --- Main Visualizer Container --- */
+.visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Section Styling --- */
+.section {
+  width: 100%;
+  padding: 2rem;
+  margin-top: 3rem;
+  border: 1px solid #333;
+  border-radius: 12px;
+  background-color: #0b0c15;
+  /* Thoda dark background box ke liye */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Sab kuch center karega */
+}
+
+/* --- Heading Fix (Tailwind Reset ko override karega) --- */
+.section h2 {
+  font-size: 2.5rem !important;
+  /* Text bada kiya */
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  color: #cbacf9;
+  /* Purple theme color */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Controls Row --- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #6919ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+button:hover {
+  background-color: #8f54ff;
+  transform: translateY(-2px);
+}
+
+/* --- Array Box (Jahan bars aayengi) --- */
+.algorithm-box {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 900px;
+  /* Box ki chaurai badhai */
+  background-color: #111;
+  border: 2px solid #333;
+  border-radius: 12px;
+  margin: 20px auto;
+  overflow-x: auto;
+  /* Agar bars zyada hon to scroll ho */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Bars Styling --- */
+.bar {
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  /* Bar ki fixed chaurai */
+  background: linear-gradient(180deg, #cbacf9 0%, #a5b4fc 100%);
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: height 0.3s ease, background-color 0.3s ease, left 0.3s ease;
+
+  /* Text Center Karne ke liye */
+  display: flex;
+  align-items: flex-end;
+  /* Text neeche hoga */
+  justify-content: center;
+  /* Text horizontal center hoga */
+  padding-bottom: 8px;
+  box-shadow: 0 -4px 10px rgba(105, 25, 255, 0.3);
+}
+
+/* --- Instructions Box --- */
+#algoDescription,
+#stepDescription,
+#graphSteps {
+  width: 100%;
+  max-width: 900px;
+  background-color: #1e1e2d;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #cbacf9;
+  margin-top: 20px;
+  color: #e2e8f0;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --- Graph Nodes --- */
+#graphContainer {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #111;
+  border: 2px solid #333;
+  border-radius: 12px;
+  margin: 0 auto;
+}
+
+.node {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #222;
+  border: 3px solid #cbacf9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  position: absolute;
+  box-shadow: 0 0 15px rgba(203, 172, 249, 0.4);
+}
